@@ -1,43 +1,15 @@
----
-title: Create React App
-description: A default Create React App project, utilizing `Caddy` to serve the built app
-tags:
-  - Node
-  - React
-  - Caddy
----
+# Let Me Scryfall That For You
 
-# Create React App
+This is a web app that allows you to link to Scryfall searches in a debatably less user-friendly way. 
 
-This is a [Create React App](https://create-react-app.dev/) starter that uses [Caddy](https://caddyserver.com/).
+## Usage
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/6sjhSn?referralCode=ySCnWl)
+The app ~~is~~ will be hosted at [https://letmescryfallthat.com](https://letmescryfallthat.com).
 
-## ✨ Features
+The page at the root URL is used to generate links to Scryfall searches. To generate a search link, enter the search query in the text box and click the "Generate Link" button. The generated link will be displayed below the button.
+ - The page will also provide pointers on Scryfall syntax usage, parsed from the input string.
+ - The page will also provide a list of recent searches, which can be clicked to generate a link to that search.
 
-- Create React App
-- [Caddy](https://caddyserver.com/)
+The generated query will link to a letmescryfallthat.com URL that will direct the user to a Scryfall search results page after clicking a button.
 
-## 💁‍♀️ How to use
-
-- Install required dependencies with `npm install`
-- Start the server for development `npm run dev`
-
-  (The original `start` command has been more appropriately renamed to `dev`)
-
-## ❓ Why use `Caddy` when deploying to Railway?
-
-Caddy is a powerful, enterprise-ready, open source web server, and therefore Caddy is far better suited to serve websites than react-scripts is, using Caddy will result in much less memory and cpu usage compared to serving with react-scripts (much lower running costs too)
-
-To see how this is achieved with nixpacks, check out the fully documented nixpacks.toml file in this repository
-
-The configuration for Caddy is called a Caddyfile, and you can edit that file to further suite your needs, by default it comes configured to serve a single page app for react, and to also gzip the responses
-
-**Relevant Caddy documentation:**
-
-- [The Caddyfile](https://caddyserver.com/docs/caddyfile)
-- [Caddyfile Directives](https://caddyserver.com/docs/caddyfile/directives)
-- [root](https://caddyserver.com/docs/caddyfile/directives/root)
-- [encode](https://caddyserver.com/docs/caddyfile/directives/encode)
-- [file_server](https://caddyserver.com/docs/caddyfile/directives/file_server)
-- [try_files](https://caddyserver.com/docs/caddyfile/directives/try_files)
+Eventually, I would like to add an AI that can generate a search query from text input, but this is a long-term goal.

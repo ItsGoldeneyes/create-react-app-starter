@@ -4,6 +4,7 @@ import './App.css';
 function App() {
     const [query, setQuery] = useState('');
     const [link, setLink] = useState('');
+  // Load current site link
 
     const createSearchLink = () => {
         const scryfallLink = `https://scryfall.com/search?q=${encodeURIComponent(query)}`;
@@ -13,7 +14,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Let Me Scryfall That</h1>
+                <h1>Let Me Scryfall That For You...</h1>
                 <input
                     type="text"
                     value={query}
