@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './App.css';
 
 function App() {
     const [query, setQuery] = useState('');
     const [link, setLink] = useState('');
-  // Load current site link
+    const location = useLocation();
 
     const createSearchLink = () => {
-        const scryfallLink = `https://scryfall.com/search?q=${encodeURIComponent(query)}`;
+        // const scryfallLink = `https://scryfall.com/search?q=${encodeURIComponent(query)}`;
+        const scryfallLink =  `${location.pathname}search?q=${encodeURIComponent(query)}`;
         setLink(scryfallLink);
     };
 
@@ -19,7 +21,7 @@ function App() {
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Enter your search term"
+                    placeholder=""
                 />
                 <button onClick={createSearchLink}>Search</button>
                 {link && (
