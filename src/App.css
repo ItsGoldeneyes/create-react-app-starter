@@ -1,47 +1,85 @@
-.App-content {
+/* App.css */
+
+.App {
   text-align: center;
-  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+.App-content {
+  padding: 20px;
 }
 
 .homepage-title {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 2em;
 }
 
 .homepage-subtitle {
-  font-size: 16px;
+  font-size: 1.2em;
   margin-bottom: 20px;
 }
 
 .homepage-search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 20px;
 }
 
 .search-container {
   display: flex;
+  justify-content: center;
   align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
+  margin-bottom: 20px; /* Add space between the search bar and card container */
 }
 
 .scryfall-logo {
-  width: 40px; /* Adjust the width as needed */
-  height: 40px; /* Adjust the height as needed */
-  margin-right: 10px; /* Optional: Add some space between the logo and input */
+  height: 40px;
+  margin-right: 10px;
 }
 
-.search-container input[type="text"] {
-  flex: 1;
+input[type="text"] {
   padding: 10px;
-  border: none;
-  outline: none;
+  font-size: 1em;
+  width: 300px;
+  margin-right: 10px;
 }
 
-.homepage-search button {
-  height: 40px; /* Match the height of the SVG */
-  margin-left: 10px;
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+.card-container {
+  /* center the cards */
+  
+
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 300px; /* Adjust height as needed */
+  overflow: hidden; /* Prevent cards from overflowing the container */
+}
+
+.card-image {
+  width: 100px; /* Set a fixed width for images */
+  height: auto; /* Maintain aspect ratio */
+  position: absolute;
+  transition: transform 0.3s, left 0.3s;
+}
+
+.stagger-up {
+  top: 0;
+  z-index: 2;
+}
+
+.stagger-down {
+  bottom: 0;
+  z-index: 1;
+}
+
+/* Stagger cards side-to-side */
+.card-image:nth-child(even) {
+  transform: translateY(-20px); /* Adjust the stagger distance */
+  left: 20px; /* Adjust horizontal stagger */
+}
+
+.card-image:nth-child(odd) {
+  transform: translateY(20px); /* Adjust the stagger distance */
+  left: -20px; /* Adjust horizontal stagger */
 }
