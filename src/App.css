@@ -1,20 +1,47 @@
-.App {
+.App-content {
   text-align: center;
-  margin-top: 50px;
+  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 }
 
-.App-header {
-  font-family: Arial, sans-serif;
-}
-
-input {
-  width: 80%;
-  padding: 10px;
-  font-size: 16px;
+.homepage-title {
+  font-size: 24px;
   margin-bottom: 10px;
 }
 
-button {
-  padding: 10px 20px;
+.homepage-subtitle {
   font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.homepage-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.scryfall-logo {
+  width: 40px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+  margin-right: 10px; /* Optional: Add some space between the logo and input */
+}
+
+.search-container input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.homepage-search button {
+  height: 40px; /* Match the height of the SVG */
+  margin-left: 10px;
 }
