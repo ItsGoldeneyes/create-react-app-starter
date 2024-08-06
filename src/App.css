@@ -67,6 +67,7 @@ button[type="submit"] {
 .card-image:hover {
   transform: translateX(var(--x-translate)) translateY(calc(var(--y-translate) - 10px)); /* Translate up by 10px on hover */
   opacity: 1; /* Ensure full opacity on hover */
+  z-index: 1; /* Ensure the hovered image is on top */
 }
 
 .card-image-wrapper {
@@ -74,7 +75,7 @@ button[type="submit"] {
   height: auto; /* Maintain aspect ratio */
   position: absolute;
   opacity: 0; /* Start as invisible */
-  animation: fadeInUp 1s forwards; /* Apply animation */
+  transform: translateX(var(--x-translate)) translateY(var(--y-translate)); /* Set initial transform state */
 }
 
 /* Keyframes for fade-in and upward movement */
@@ -87,6 +88,10 @@ button[type="submit"] {
     opacity: 1;
     transform: translateX(var(--x-translate)) translateY(var(--y-translate)); /* End at the designated position */
   }
+}
+
+.card-image-wrapper.animate {
+  animation: fadeInUp 1s forwards; /* Apply animation */
 }
 
 /* Position and animation delay for each card */

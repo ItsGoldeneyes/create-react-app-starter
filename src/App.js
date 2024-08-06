@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-    const [searchTerm, setSearchTerm] = useState('Odric');
-    const [top5cardimages, setTop5CardImages] = useState([]);
+    var [searchTerm, setSearchTerm] = useState('Odric');
+    var [lastSearchTerm, setLastSearchTerm] = useState('');
+    var [top5cardimages, setTop5CardImages] = useState([]);
 
     useEffect(() => {
         const queryAPI = async (query) => {
@@ -13,20 +14,35 @@ function App() {
         };
 
         const interval = setInterval(() => {
-            if (searchTerm) {
+            if (searchTerm !== lastSearchTerm) {
+                console.warn("search term: " + searchTerm);
                 queryAPI(searchTerm).then((data) => {
                     if (data.data) {
                         const top5cards = data.data.slice(0, 5);
-                        const top5cardimages = top5cards.map((card) => {
+                        const top5cardimages = top5cards.map((card, index) => {
                             if (card.image_uris) {
-                                return <div class="card-image-wrapper"><img key={card.id} src={card.image_uris.png} alt={card.name} className="card-image" /></div> ;
+                                return (
+                                    <div
+                                        key={card.id}
+                                        className="card-image-wrapper animate"
+                                    >
+                                        <img
+                                            src={card.image_uris.png}
+                                            alt={card.name}
+                                            className="card-image"
+                                        />
+                                    </div>
+                                );
                             }
                             return null;
                         });
                         setTop5CardImages(top5cardimages);
+                        console.log(top5cards);
+
                     }
                 });
             }
+            lastSearchTerm = searchTerm;
         }, 1000);
 
         return () => clearInterval(interval);
