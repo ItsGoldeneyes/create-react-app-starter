@@ -2,47 +2,34 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [top5CardImages, setTop5CardImages] = useState([]);
-
-    const queryAPI = async (term) => {
-        try {
-            const response = await fetch(`https://api.scryfall.com/cards/search?q=${encodeURIComponent(term)}`);
-            const data = await response.json();
-            if (data.object === "list" && Array.isArray(data.data)) {
-                return data;
-            } else {
-                throw new Error("Invalid response format");
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            return null;
-        }
-    };
+    const [searchTerm, setSearchTerm] = useState('Odric');
+    const [top5cardimages, setTop5CardImages] = useState([]);
 
     useEffect(() => {
-        if (searchTerm) {
-            const interval = setInterval(() => {
+        const queryAPI = async (query) => {
+            const response = await fetch(`https://api.scryfall.com/cards/search?q=${query}`);
+            const data = await response.json();
+            return data;
+        };
+
+        const interval = setInterval(() => {
+            if (searchTerm) {
                 queryAPI(searchTerm).then((data) => {
-                    if (data && data.data) {
+                    if (data.data) {
                         const top5cards = data.data.slice(0, 5);
-                        const top5cardimages = top5cards.map((card, index) => {
-                            if (card.image_uris && card.image_uris.normal) {
-                                const staggerClass = index % 2 === 0 ? 'stagger-up' : 'stagger-down';
-                                return <img key={card.id} src={card.image_uris.normal} alt={card.name} className={`card-image ${staggerClass}`} />;
-                            } else {
-                                return null; // Skip cards without images
+                        const top5cardimages = top5cards.map((card) => {
+                            if (card.image_uris) {
+                                return <div class="card-image-wrapper"><img key={card.id} src={card.image_uris.png} alt={card.name} className="card-image" /></div> ;
                             }
-                        }).filter(Boolean); // Filter out null values
+                            return null;
+                        });
                         setTop5CardImages(top5cardimages);
-                    } else {
-                        setTop5CardImages([]); // Clear images if no data
                     }
                 });
-            }, 1000);
+            }
+        }, 1000);
 
-            return () => clearInterval(interval);
-        }
+        return () => clearInterval(interval);
     }, [searchTerm]);
 
     return (
@@ -55,11 +42,14 @@ function App() {
                         <svg focusable="false" aria-hidden="true" className="scryfall-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 460">
                             <image href="/scryfall-logo.svg" width="100%" height="100%" />
                         </svg>
-                        <input type="text" name="q" placeholder="Search cards..." onChange={(e) => setSearchTerm(e.target.value)}/>
-                        <button type="submit">Search</button>
+                        <input type="text" name="q" placeholder="Search cards..." onChange={(e) => setSearchTerm(e.target.value)} />
                     </div>
+                    <button type="submit">Search</button>
                 </form>
-                <div className="card-container">{top5CardImages}</div>
+                
+                <div className="card-image-container">
+                    {top5cardimages}
+                </div>
             </header>
         </div>
     );

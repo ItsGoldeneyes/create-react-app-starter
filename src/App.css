@@ -25,7 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px; /* Add space between the search bar and card container */
+  margin-bottom: 20px;
 }
 
 .scryfall-logo {
@@ -45,41 +45,83 @@ button[type="submit"] {
   font-size: 1em;
 }
 
-.card-container {
-  /* center the cards */
-  
-
+.card-image-container {
   display: flex;
-  justify-content: center;
   position: relative;
-  height: 300px; /* Adjust height as needed */
+  height: 34vh; /* Adjust height as needed */
   overflow: hidden; /* Prevent cards from overflowing the container */
 }
 
+
 .card-image {
-  width: 100px; /* Set a fixed width for images */
+  width: 20vh; /* Start with 20% width */
   height: auto; /* Maintain aspect ratio */
   position: absolute;
-  transition: transform 0.3s, left 0.3s;
+  opacity: 1; /* Start as invisible */
+  transform: translateX(var(--x-translate)) translateY(var(--y-translate)); /* Set initial transform state */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transform and opacity effect */
+
 }
 
-.stagger-up {
-  top: 0;
-  z-index: 2;
+/* Hover effect */
+.card-image:hover {
+  transform: translateX(var(--x-translate)) translateY(calc(var(--y-translate) - 10px)); /* Translate up by 10px on hover */
+  opacity: 1; /* Ensure full opacity on hover */
 }
 
-.stagger-down {
-  bottom: 0;
-  z-index: 1;
+.card-image-wrapper {
+  width: 20vh; /* Start with 20% width */
+  height: auto; /* Maintain aspect ratio */
+  position: absolute;
+  opacity: 0; /* Start as invisible */
+  animation: fadeInUp 1s forwards; /* Apply animation */
 }
 
-/* Stagger cards side-to-side */
-.card-image:nth-child(even) {
-  transform: translateY(-20px); /* Adjust the stagger distance */
-  left: 20px; /* Adjust horizontal stagger */
+/* Keyframes for fade-in and upward movement */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateX(var(--x-translate)) translateY(calc(var(--y-translate) + 20%)); /* Start below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(var(--x-translate)) translateY(var(--y-translate)); /* End at the designated position */
+  }
 }
 
-.card-image:nth-child(odd) {
-  transform: translateY(20px); /* Adjust the stagger distance */
-  left: -20px; /* Adjust horizontal stagger */
+/* Position and animation delay for each card */
+.card-image-wrapper:nth-child(1) {
+  left: 50%;
+  --x-translate: -50%;
+  --y-translate: 20%;
+  animation-delay: 0s; /* No delay for the first image */
+  z-index: 1; /* Ensure the first image is on top */
+}
+
+.card-image-wrapper:nth-child(2) {
+  left: calc(50% - 12.5vh);
+  --x-translate: -50%;
+  --y-translate: 5%;
+  animation-delay: 0.2s; /* 0.2s delay for the second image */
+}
+
+.card-image-wrapper:nth-child(3) {
+  left: calc(50% + 12.5vh);
+  --x-translate: -50%;
+  --y-translate: 5%;
+  animation-delay: 0.4s; /* 0.4s delay for the third image */
+}
+
+.card-image-wrapper:nth-child(4) {
+  left: calc(50% - 25vh);
+  --x-translate: -50%;
+  --y-translate: 20%;
+  animation-delay: 0.6s; /* 0.6s delay for the fourth image */
+}
+
+.card-image-wrapper:nth-child(5) {
+  left: calc(50% + 25vh);
+  --x-translate: -50%;
+  --y-translate: 20%;
+  animation-delay: 0.8s; /* 0.8s delay for the fifth image */
 }
