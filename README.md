@@ -4,7 +4,7 @@ This is a web app that allows you to link to Scryfall searches in a debatably le
 
 ## Usage
 
-The app ~~is~~ will be hosted at [https://letmescryfallthat.com](https://scryforme.com).
+The app ~~is~~ will be hosted at [https://scryforme.com](https://scryforme.com).
 
 The page at the root URL is used to generate links to Scryfall searches. To generate a search link, enter the search query in the text box and click the "Generate Link" button. The generated link will be displayed below the button.
  - The page will also provide pointers on Scryfall syntax usage, parsed from the input string.
