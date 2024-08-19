@@ -4,7 +4,7 @@ import './App.css';
 function App() {
     var [searchTerm, setSearchTerm] = useState('Odric');
     var [lastSearchTerm, setLastSearchTerm] = useState('');
-    var [top5cardimages, setTop5CardImages] = useState([]);
+    var [topcardimages, settopcardImages] = useState([]);
 
     useEffect(() => {
         const queryAPI = async (query) => {
@@ -18,8 +18,8 @@ function App() {
                 console.warn("search term: " + searchTerm);
                 queryAPI(searchTerm).then((data) => {
                     if (data.data) {
-                        const top5cards = data.data.slice(0, 5);
-                        const top5cardimages = top5cards.map((card, index) => {
+                        const topcards = data.data.slice(0, 5);
+                        const topcardimages = topcards.map((card, index) => {
                             if (card.image_uris) {
                                 return (
                                     <div
@@ -36,8 +36,8 @@ function App() {
                             }
                             return null;
                         });
-                        setTop5CardImages(top5cardimages);
-                        console.log(top5cards);
+                        settopcardImages(topcardimages);
+                        console.log(topcards);
 
                     }
                 });
@@ -58,13 +58,13 @@ function App() {
                         <svg focusable="false" aria-hidden="true" className="scryfall-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 460">
                             <image href="/scryfall-logo.svg" width="100%" height="100%" />
                         </svg>
-                        <input type="text" name="q" placeholder="Search cards..." onChange={(e) => setSearchTerm(e.target.value)} />
+                        <input type="text" class="search-container-input" ame="q" placeholder="Search cards..." onChange={(e) => setSearchTerm(e.target.value)} />
                     </div>
                     <button type="submit">Search</button>
                 </form>
-                
+                <a>Need a tutorial? Click here!</a>
                 <div className="card-image-container">
-                    {top5cardimages}
+                    {topcardimages}
                 </div>
             </header>
         </div>

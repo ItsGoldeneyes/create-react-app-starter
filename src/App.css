@@ -1,5 +1,61 @@
 /* App.css */
 
+@font-face {
+  font-family: "Lato";
+  font-weight: 300;
+  font-style: normal;
+  src: url(https://scryfall.com/assets/lato/light-9d30ce34c83ee04ce2d61f12538ec145b6a2779f8255c6386ad5ee4c630605fa.woff2) format("woff2"),url(https://scryfall.com/assets/lato/light-656d17acf8b0ede7d3157703122fb9816437e2fc405a93b68345eb00a1dc6ea8.woff) format("woff");
+  font-display: swap;
+  font-synthesis:style}
+
+@font-face {
+  font-family: "Lato";
+  font-weight: normal;
+  font-style: normal;
+  src: url(https://scryfall.com/assets/lato/regular-c2ccc448ce6ab550fbe3aa7d2cf5f29b0f0261c67d944ba2b5c7a3b8eb87143b.woff2) format("woff2"),url(https://scryfall.com/assets/lato/regular-c8d842745b798f2e87b0b78d321a4e62535327adfd67e6a16aa6931f1f757acc.woff) format("woff");
+  font-display: swap;
+  font-synthesis:style}
+
+@font-face {
+  font-family: "Lato";
+  font-weight: normal;
+  font-style: italic;
+  src: url(https://scryfall.com/assets/lato/italic-bbfeccdbecf9a8bf0a2973917d686055d4f6f09ba487a339c339af3674258e2c.woff2) format("woff2"),url(https://scryfall.com/assets/lato/italic-7270936e7a750b51c7e60fafa21388045b27087c0e74ef1cf98cba7d3c614c7f.woff) format("woff");
+  font-display: swap;
+  font-synthesis:style}
+
+@font-face {
+  font-family: "Lato";
+  font-weight: bold;
+  font-style: normal;
+  src: url(https://scryfall.com/assets/lato/semibold-41b003d1eba1097a6303bfcd7c4e889dd16746307c3918fb0f852f41cd05d940.woff2) format("woff2"),url(https://scryfall.com/assets/lato/semibold-b9b7fecded7b5cdd2cbff567b624b4034a3025e767f54ff7a9e48c3edf7db255.woff) format("woff");
+  font-display: swap;
+  font-synthesis:style}
+
+@font-face {
+  font-family: "MPlantin";
+  font-weight: normal;
+  font-style: italic;
+  src: url(https://scryfall.com/assets/mplantin/italic-c8e1879f8af7dfc6f45b4e5b933b925ca19fbe5f01baff39de7165cb4f8fb6fc.woff2) format("woff2"),url(https://scryfall.com/assets/mplantin/italic-fa4269c05eb9afa8bf8c0647f7c4292c41e232fa9d98c231def700f8cf91ea4a.woff) format("woff");
+  font-display: swap
+}
+
+@font-face {
+  font-family: "FiraMono";
+  font-weight: normal;
+  font-style: normal;
+  src: url(https://scryfall.com/assets/fira-mono/regular-6a25a0453858d8dc1414c3a9460473f900b6da9474b9b68b07b27b843c951708.woff2) format("woff2"),url(https://scryfall.com/assets/fira-mono/regular-614e88c759e18ff16a61791d5bb10014eba023d437bc415cb8baa86ab7302ace.woff) format("woff");
+  font-display: swap
+}
+
+@font-face {
+  font-family: "PhyrexianHorizontal";
+  font-weight: normal;
+  font-style: normal;
+  src: url(https://scryfall.com/assets/phyrexian-horizontal/regular-21362711545c2f44c9a279fefa11101bddc0d5372d7f6bf0e698bf7ebfc711e5.woff2) format("woff2"),url(https://scryfall.com/assets/phyrexian-horizontal/regular-64a4db5f6e6e0ad87eb64354048fb0d133e03f8972fd140a4d161bf6a722cc9e.woff) format("woff");
+  font-display: swap
+}
+
 .App {
   text-align: center;
 }
@@ -23,14 +79,32 @@
 
 .search-container {
   display: flex;
+  display: inline-block;
   justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  background-color: #242031;
+  color: #D7D7D7;
   align-items: center;
-  margin-bottom: 20px;
+}
+
+.search-container-input {
+  right: 100px;
+  float: left;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: #242031;
+  color: #D7D7D7;
 }
 
 .scryfall-logo {
-  height: 40px;
-  margin-right: 10px;
+  float: left;
+  height: 35px;
+  padding: 2px;
+  /* text-align: center; */
+  /* display: block; */
+  /* position: absolute; */
 }
 
 input[type="text"] {
@@ -46,10 +120,13 @@ button[type="submit"] {
 }
 
 .card-image-container {
-  display: flex;
-  position: relative;
+  position: fixed;
+  left: 50%;
+  bottom: -20%;
+  /* transform: translate(-50%, -50%); */
+  margin: 0 auto;
   height: 34vh; /* Adjust height as needed */
-  overflow: hidden; /* Prevent cards from overflowing the container */
+  /* overflow: hidden; */
 }
 
 
@@ -82,7 +159,7 @@ button[type="submit"] {
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateX(var(--x-translate)) translateY(calc(var(--y-translate) + 20%)); /* Start below */
+    transform: translateX(var(--x-translate)) translateY(calc(var(--y-translate) + 100px)); /* Start below */
   }
   100% {
     opacity: 1;
