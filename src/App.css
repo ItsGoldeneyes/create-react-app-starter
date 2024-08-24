@@ -56,12 +56,49 @@
   font-display: swap
 }
 
-.App {
+
+body {
+  color: #16161D;
+  font-size: 15px;
+  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #2B253A;
+  color: #F5F6F7;
   text-align: center;
+  align-items: stretch;
 }
 
-.App-content {
-  padding: 20px;
+h1 {
+  font-size: 2em;
+  font-weight: 300;
+  margin: 0;
+}
+
+.App {
+  min-height: 70vh;
+  background-color: #F5F6F7;
+}
+
+.homepage {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(to bottom, #1d1c25, #4a2d7a);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  text-align: center;
+  list-style: none;
+  margin: 0;
+}
+
+.inner-flex {
+  height: 90vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  padding: 0 5%;
 }
 
 .homepage-title {
@@ -74,10 +111,11 @@
 }
 
 .homepage-search {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .search-container {
+  height: 50px;
   display: flex;
   display: inline-block;
   justify-content: center;
@@ -98,35 +136,82 @@
   color: #D7D7D7;
 }
 
+.search-container-input:focus {outline:none!important;}
+
 .scryfall-logo {
   float: left;
-  height: 35px;
-  padding: 2px;
+  height: 40px;
+  padding: 5px;
   /* text-align: center; */
   /* display: block; */
   /* position: absolute; */
 }
 
-input[type="text"] {
+.search-container-input[type="text"] {
   padding: 10px;
-  font-size: 1em;
+  font-size: 24px;
   width: 300px;
   margin-right: 10px;
 }
 
-button[type="submit"] {
-  padding: 10px 20px;
-  font-size: 1em;
+.result-container {
+  display: flex;
+  align-items: center;
+  margin-top: 0; /* Remove any extra margin */
+  animation: dropIn 0.5s ease-out; /* Animation for the drop-down effect */
 }
+
+@keyframes dropIn {
+  0% {
+      transform: translateY(-20px); /* Start slightly above */
+      opacity: 0; /* Start as invisible */
+  }
+  100% {
+      transform: translateY(0); /* End at the final position */
+      opacity: 1; /* End fully visible */
+  }
+}
+
+.result-box {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 2px 0 0 2px; /* Rounded corners on the left side */
+  background-color: #242031;
+  color: #D7D7D7;
+  padding: 10px;
+  max-width: 80%;
+  text-align: center;
+  font-size: 16px;
+  flex: 1;
+}
+
+.copy-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-left: none; /* Remove border between input and button */
+  border-radius: 0 2px 2px 0; /* Rounded corners on the right side */
+  background-color: #4a2d7a;
+  color: white;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  background-color: #242031; /* Darker blue on hover */
+}
+
 
 .card-image-container {
   position: fixed;
   left: 50%;
-  bottom: -20%;
   /* transform: translate(-50%, -50%); */
   margin: 0 auto;
   height: 34vh; /* Adjust height as needed */
-  /* overflow: hidden; */
+  bottom: 0;
+  height: 150px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
 }
 
 
