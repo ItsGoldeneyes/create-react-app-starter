@@ -103,6 +103,7 @@ h1 {
 
 .homepage-title {
   font-size: 2em;
+  font-weight: 200;
 }
 
 .homepage-subtitle {
@@ -128,7 +129,7 @@ h1 {
 
 .search-container-input {
   right: 100px;
-  float: left;
+  float: right;
   display: flex;
   align-items: center;
   border: none;
@@ -150,7 +151,6 @@ h1 {
 .search-container-input[type="text"] {
   padding: 10px;
   font-size: 24px;
-  width: 300px;
   margin-right: 10px;
 }
 
@@ -291,4 +291,25 @@ h1 {
   --x-translate: -50%;
   --y-translate: 20%;
   animation-delay: 0.8s; /* 0.8s delay for the fifth image */
+}
+
+@media (max-width: 500px) {
+  .search-container {
+      width: 90%; /* Make the container slightly smaller */
+      display: flex; /* Ensure flexbox aligns items properly */
+      flex-wrap: nowrap; /* Prevent wrapping of items */
+      padding: 0 5px; /* Add padding to create space within */
+  }
+
+  .scryfall-logo {
+      height: 30px; /* Adjust the logo size */
+      margin-right: 5px; /* Space between logo and input */
+  }
+
+  .search-container-input {
+      font-size: 16px; /* Reduce font size for smaller screens */
+      padding: 5px; /* Adjust padding for fit */
+      flex: 1; /* Allow input to fill remaining space */
+      min-width: 0; /* Prevent the input from expanding beyond container */
+  }
 }

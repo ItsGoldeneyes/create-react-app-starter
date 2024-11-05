@@ -61,8 +61,8 @@ function App() {
         <div className="App">
             <div className="homepage">
                 <div className="inner-flex">
-                    <h1 className="homepage-title"><strong>Scryfall</strong> is powerful, but <strong>not everyone knows how to use it</strong></h1>
-                    <p className="homepage-subtitle">Use this tool to spread your knowledge!</p>
+                    <h1 className="homepage-title">Let me scry(fall) for you</h1>
+                    <p className="homepage-subtitle"></p>
                     <form className="homepage-search" onSubmit={handleSearchSubmit}>
                         <div className="search-container">
                             <svg focusable="false" aria-hidden="true" className="scryfall-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 460">
