@@ -1,6 +1,6 @@
 # scryforme
 
-This is a web app that allows you to link to Scryfall searches in a debatably less user-friendly way. 
+This is a web app that allows you to link to Scryfall searches in more helpful way. Rather than just be sent to a Scryfall page with the query's results, users will be given an explanation of the query and an opportunity to refine the search before being sent to Scryfall. 
 
 ## Usage
 
